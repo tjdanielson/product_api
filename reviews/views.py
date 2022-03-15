@@ -49,7 +49,16 @@ class ReviewsById(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 
+class ReviewsByProduct(APIView):
 
+    def get(self, request, pk):
+        reviews = Review.objects.filter(product_id=pk)
+        serializer = ReviewSerializer(reviews, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+        
+
+    
+    
 #Function-based views
 # @api_view(['GET', 'POST'])
 # def review_list(request):
