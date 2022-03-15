@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -11,4 +12,12 @@ def review_list(request):
     if request.method == 'GET':
         reviews = Review.objects.all()
         serializer = ReviewSerializer(reviews, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def reviews_by_id(request, pk):
+    review = get_object_or_404(review, pk)
+    if request.method == 'GET':
+        serializer = ReviewSerializer(review)
         return Response(serializer.data, status=status.HTTP_200_OK)
