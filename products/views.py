@@ -1,5 +1,7 @@
 from urllib import response
 from rest_framework.decorators import api_view
+
+import products
 from .serializers import ProductSerializer, serializers
 from .models import Product
 from rest_framework.response import Response
@@ -21,4 +23,8 @@ def products_list(request):
 
 @api_view(['GET'])
 def products_by_id(request, pk):
-    pass
+    if request.method == 'GET':
+        product = Product.objects.get(pk=pk)
+        serializer = ProductSerializer(product)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
