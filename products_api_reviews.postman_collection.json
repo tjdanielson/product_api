@@ -77,6 +77,14 @@
 				"header": []
 			},
 			"response": []
+		},
+		{
+			"name": "get_reviews_by_product",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	]
 }
