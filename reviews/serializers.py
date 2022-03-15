@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Review
 
-class ProductSerializer(serializers.ModelSerializer):
+class ReviewSerializer(serializers.ModelSerializer):
     pass
     class Meta:
         model = Review
