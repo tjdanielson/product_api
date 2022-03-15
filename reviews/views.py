@@ -22,7 +22,7 @@ def review_list(request):
 
 @api_view(['GET'])
 def reviews_by_id(request, pk):
-    review = get_object_or_404(review, pk)
+    review = get_object_or_404(Review, pk=pk)
     if request.method == 'GET':
         serializer = ReviewSerializer(review)
         return Response(serializer.data, status=status.HTTP_200_OK)
