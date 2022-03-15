@@ -1,4 +1,5 @@
 from urllib import response
+from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 
 import products
@@ -23,8 +24,8 @@ def products_list(request):
 
 @api_view(['GET'])
 def products_by_id(request, pk):
+    product = get_object_or_404(Product, pk=pk)
     if request.method == 'GET':
-        product = Product.objects.get(pk=pk)
         serializer = ProductSerializer(product)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
