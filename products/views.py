@@ -1,3 +1,4 @@
+from itertools import product
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view #for functionbased views
@@ -35,6 +36,15 @@ class ProductById(APIView):
         product = self.get_object(pk)
         serializer = ProductSerializer(product)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request, pk):
+        product = self.get_object(pk)
+        serializer = ProductSerializer(product, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 #Function based views:
