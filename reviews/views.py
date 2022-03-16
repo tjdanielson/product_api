@@ -7,6 +7,7 @@ from rest_framework import status
 from .models import Review
 from .serializers import ReviewSerializer, serializers
 
+
 # Create your views here.
 class ReviewList(APIView):
 
@@ -53,6 +54,13 @@ class ReviewsByProduct(APIView):
 
     def get(self, request, pk):
         reviews = Review.objects.filter(product_id=pk)
+        serializer = ReviewSerializer(reviews, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class ReviewsByStars(APIView):
+
+    def get(self, request, pk):
+        reviews = Review.objects.filter(stars=pk)
         serializer = ReviewSerializer(reviews, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
         

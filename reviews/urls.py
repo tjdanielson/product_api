@@ -4,5 +4,6 @@ from . import views
 urlpatterns = [
     path('', views.ReviewList.as_view()),
     path('<int:pk>/', views.ReviewsById.as_view()),
-    path('product/<int:pk>/', views.ReviewsByProduct.as_view())
+    path('product/<int:pk>/', views.ReviewsByProduct.as_view()),
+    path('stars/<int:pk>/', views.ReviewsByStars.as_view())
 ]
