@@ -36,7 +36,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"ToolLuvr\",\r\n    \"description\": \"Love this wrench, it is the best\",\r\n    \"stars\": 5,\r\n    \"product\": 6\r\n}",
+					"raw": "{\r\n    \"username\": \"ToolsRLife\",\r\n    \"description\": \"Great drill, 5 stars\",\r\n    \"stars\": 5,\r\n    \"product\": 2\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -148,8 +148,11 @@
 		},
 		{
 			"name": "get_reviews_by_product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -170,6 +173,39 @@
 						"reviews",
 						"product",
 						"5",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_reviews_by_stars",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reviews/stars/4/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reviews",
+						"stars",
+						"4",
 						""
 					]
 				}
